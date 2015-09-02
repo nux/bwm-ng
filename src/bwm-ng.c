@@ -252,6 +252,13 @@ int main (int argc, char *argv[]) {
             out_file=fopen(out_file_path,"w");
         }
 #endif
+#ifdef CSV
+        /* open the output file */
+        if (output_method==CSV_OUT && out_file_path) {
+            if (out_file) fclose(out_file);
+            out_file=fopen(out_file_path,"w");
+        }
+#endif
         /* check if we will output anything */
         ch=!(output_method==PLAIN_OUT_ONCE
 #ifdef HTML
